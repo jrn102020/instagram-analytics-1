@@ -74,10 +74,9 @@ def main():
 
         HOUR_COUNT[last_post_hour] += 1
 
-
     most_active_day = max(DAY_COUNT.iteritems(), key=operator.itemgetter(1))[0]
-    most_active_hour = int(max(HOUR_COUNT.iteritems(), key=operator.itemgetter(1))[0]) + 1
-    return render_template("response.html", time=most_active_hour, day=most_active_day, hour_count=HOUR_COUNT, day_count=DAY_COUNT)
+    most_active_hour = int(max(HOUR_COUNT.iteritems(), key=operator.itemgetter(1))[0])
+    return render_template("response.html", time=most_active_hour, day=most_active_day)
 
 
 if __name__ == "__main__":
