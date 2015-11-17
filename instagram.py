@@ -1,12 +1,13 @@
 import datetime
 import operator
+import os
 import requests
 import sys
 
 from flask import Flask, request, render_template
 app = Flask(__name__)
 
-ACCESS_TOKEN = 'xxxxxx.xxxxx.xxxxxxx'
+ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN', None)
 FOLLOWERS_ROOT = "https://api.instagram.com/v1/users/%d/followed-by?access_token=%s"
 LAST_POST_ROOT = "https://api.instagram.com/v1/users/%d/media/recent/?access_token=%s&count=1"
 
@@ -79,4 +80,6 @@ def main():
     return render_template("response.html", time=most_active_hour, day=most_active_day, hour_count=HOUR_COUNT, day_count=DAY_COUNT)
 
 
-if __name__ == "__main__": app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
