@@ -8,7 +8,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN', None)
-FOLLOWERS_ROOT = "https://api.instagram.com/v1/users/%d/followed-by?access_token=%s"
+FOLLOWERS_ROOT = "https://api.instagram.com/v1/users/%d/followed-by?access_token=%s&count=10000"
 LAST_POST_ROOT = "https://api.instagram.com/v1/users/%d/media/recent/?access_token=%s&count=1"
 
 @app.route("/")
