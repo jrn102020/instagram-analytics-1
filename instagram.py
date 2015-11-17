@@ -39,13 +39,13 @@ def get_day_from_timestamp(timestamp):
     '''
     Returns day of the week for a given timestamp.
     '''
-    return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%A')
+    return datetime.datetime.utcfromtimestamp(int(timestamp)).strftime('%A')
 
 def get_hour_from_timestamp(timestamp):
     '''
     Returns hour of the day for a given timestamp
     '''
-    return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%H')
+    return datetime.datetime.utcfromtimestamp(int(timestamp)).strftime('%H')
 
 @app.route("/process", methods=["GET"])
 def main():
